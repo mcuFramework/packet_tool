@@ -31,7 +31,7 @@ public class FolderIndex {
             " */\n";
 
     private final String textEnd =
-            "/* *****************************************************************************************\n" +
+            "/* ****************************************************************************************\n" +
             " * End of file\n" +
             " */\n";
 
@@ -108,7 +108,7 @@ public class FolderIndex {
 
         stringBuilder.append(this.textFolder);
         for(FolderManager folder: this.getFolders()){
-            stringBuilder.append(String.format("#include \"%s\\package-info.h\"\n", folder.getFolderName()));
+            stringBuilder.append(String.format("#include \"%s/package-info.h\"\n", folder.getFolderName()));
             System.out.printf("include packet file: %s\n", folder.getFolderName());
         }
 
