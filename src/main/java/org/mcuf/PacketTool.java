@@ -33,6 +33,10 @@ public class PacketTool implements Runnable {
                 packetTool.make();
                 break;
 
+            case "struct":
+                new MakeFile(filePath).makeStruct();
+                break;
+
             case "class":
                 new MakeFile(filePath).makeClass();
                 break;
