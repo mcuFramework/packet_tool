@@ -3,15 +3,13 @@ package org.mcuf;
 import net.mckitsu.file.FileManager;
 import net.mckitsu.file.FolderManager;
 
-import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
-import java.util.stream.StreamSupport;
 
-public class FolderIndex {
+public class MakeFilePackageList {
     private final String textHeader =
             "/**\n" +
             " * Copyright (c) 2020 ZxyKira\n" +
@@ -37,10 +35,10 @@ public class FolderIndex {
 
     private FolderManager path;
     private List<String> files;
-    private List<FolderIndex> nextLevel = new LinkedList<>();
+    private List<MakeFilePackageList> nextLevel = new LinkedList<>();
     private String definePath;
 
-    public FolderIndex(FolderManager path){
+    public MakeFilePackageList(FolderManager path){
         this.path = path;
         String guid = UUID.randomUUID().toString().toUpperCase(Locale.ROOT);
         guid = guid.replace('-', '_');
@@ -78,7 +76,7 @@ public class FolderIndex {
         this.files = new LinkedList<>();
 
         for(FolderManager folder: this.getFolders()){
-            FolderIndex folderIndex = new FolderIndex(folder);
+            MakeFilePackageList folderIndex = new MakeFilePackageList(folder);
             this.nextLevel.add(folderIndex);
             folderIndex.make();
         }
